@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon-pink: #ff00ff;
+  --neon-purple: #9900ff;
+  --neon-yellow: #ffff00;
+  --dull-gray: #444444;
+  --dark-gray: #222222;
+  --black: #111111;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-black text-white font-body;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .neon-text {
+    text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-pink), 0 0 15px var(--neon-pink);
+  }
+  
+  .neon-box {
+    box-shadow: 0 0 5px var(--neon-purple), 0 0 10px var(--neon-purple);
+  }
+  
+  .gradient-bg {
+    background: radial-gradient(circle at center, var(--neon-pink), var(--neon-purple) 30%, var(--dull-gray) 70%, var(--black) 100%);
+  }
+  
+  .btn-primary {
+    @apply bg-neon-pink hover:bg-neon-pink/80 text-white font-bold py-2 px-6 rounded-md transition-all duration-300 uppercase tracking-wider;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+  }
+  
+  .coin-spin {
+    animation: spin 10s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
+  }
+  
+  .floating {
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  .dictator-card {
+    @apply bg-dark-gray rounded-lg overflow-hidden transition-all duration-300;
+  }
+  
+  .dictator-card:hover {
+    @apply neon-box transform scale-105;
+  }
+  
+  .dictator-card img {
+    @apply transition-all duration-300;
+  }
+  
+  .dictator-card:hover img {
+    @apply brightness-125;
+  }
+}
